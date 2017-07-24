@@ -5,25 +5,19 @@
     <view class="page-head-line"></view>
   </view>
 
-  <!--<view class="page-body">-->
-    <!--<view class="page-section">-->
-  <view class="page-body-info">
-
+  <view class="page-body">
     <block wx:if="{{imageSrc}}">
       <image src="{{imageSrc}}" class="image" mode="aspectFit"></image>
     </block>
 
     <block wx:else>
-      <view class="image-plus image-plus-nb" bindtap="chooseImage">
+      <view class="image-plus" bindtap="chooseImage">
         <view class="image-plus-horizontal"></view>
         <view class="image-plus-vertical"></view>
       </view>
-      <view class="image-plus-text">选择图片</view>
+      <view class="image-plus-text" bindtap="chooseImage">选择图片</view>
     </block>
-
   </view>
-    <!--</view>-->
-  <!--</view>-->
 
   <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadimageBtnLoading}}" bindtap="uploadImage"> Upload the image</button>
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>

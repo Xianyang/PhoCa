@@ -1,17 +1,4 @@
-
-/*.page-body {
-  width: 100%;
-  flex-grow: 1;
-  overflow-x: hidden;
-}*/
-/*.page-section{
-  width: 100%;
-  margin-bottom: 60rpx;
-}
-.page-section:last-child{
-  margin-bottom: 0;
-}*/
-.page-body-info {
+.page-body{
   width: 100%;
   display: flex;
   box-sizing: border-box;
@@ -33,11 +20,7 @@
 .image-plus {
   width: 150rpx;
   height: 150rpx;
-  border: 2rpx solid #D9D9D9;
   position: relative;
-}
-.image-plus-nb{
-  border: 0;
 }
 .image-plus-text{
   color: #888888;
