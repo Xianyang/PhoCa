@@ -23,5 +23,3 @@
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
 
 </view>
-
-

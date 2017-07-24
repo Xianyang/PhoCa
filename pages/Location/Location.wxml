@@ -1,5 +1,25 @@
 <view class="container">
-  <view class="textContainer">
-    <text class="textStyle">{{text}}</text>
+  <view class="page-head">
+    <view class="page-head-title">Location</view>
+    <view class="page-head-line"></view>
   </view>
+  
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="../getLocation/getLocation" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <!--<view class="weui-cell__hd"></view>-->
+      <view class="weui-cell__bd">Get Current Location</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../locationMap/locationMap" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <!--<view class="weui-cell__hd"></view>-->
+      <view class="weui-cell__bd">Location in map</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../locationPicker/locationPicker" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <!--<view class="weui-cell__hd"></view>-->
+      <view class="weui-cell__bd">Location picker</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+  </view>
+
 </view>

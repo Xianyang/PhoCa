@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">Location Service</view>
+    <view class="page-head-line"></view>
+  </view>
+
+  <button type="primary" bindtap="openLocation">Get current location in map</button>
+
+</view>
