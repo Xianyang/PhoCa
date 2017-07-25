@@ -17,7 +17,7 @@
         </block>
   </view>
 
-  <button type="primary" bindtap="fetchLocation">Get current location</button>
+  <button type="primary" bindtap="fetchLocation" loading="{{loading}}">Get current location</button>
   <button type="default" bindtap="clear">Clear</button>
 
 </view>
