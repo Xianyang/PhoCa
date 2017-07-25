@@ -1,2 +1,24 @@
-<!--locationPicker.wxml-->
-<text>locationPicker.wxml</text>
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">Location Service</view>
+    <view class="page-head-line"></view>
+  </view>
+
+  <view class="page-body">
+    <text class="page-body-text-small">当前位置经纬度</text>
+    <block wx:if="{{hasLocation == false}}">
+        <text class="page-body-text">未获取</text>
+    </block>
+    <block wx:if="{{hasLocation === true}}">
+        <text class="page-body-text">{{locationAddress}}</text>
+        <view class="page-body-text-location">
+            <text>E: {{location.longitude[0]}}°{{location.longitude[1]}}′</text>
+            <text>N: {{location.latitude[0]}}°{{location.latitude[1]}}′</text>
+        </view>
+    </block>
+  </view>
+
+  <button type="primary" bindtap="chooseLocation" loading="{{loading}}">Choose a location</button>
+  <button type="default" bindtap="clear">Clear</button>
+
+</view>

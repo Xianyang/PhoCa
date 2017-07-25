@@ -23,8 +23,8 @@ Page({
         wx.openLocation({
           longitude: Number(res.longitude),
           latitude: Number(res.latitude),
-          // name: "name?",
-          // address: "address?"
+          // name: res.name,
+          // address: res.address,
         })
       }
     })
