@@ -1,6 +1,6 @@
 # Weekly Report
 
-## 26/7/2017
+`Luo Xianyang` `2017-07-26`
 ### 本周进度
   1. 学习小程序注册、开发、发布的流程
     - 已注册个人开发账号用于开发和测试
@@ -31,8 +31,9 @@
   </tr>
 </table>
 
-![](./image/image1copy.png)
-![](./image/image1copy.png)
+![](./image/image1.png)
+![](./image/image2.png)
+![](./image/image3.png)
 
   5. 定位功能
 
@@ -52,6 +53,12 @@
   </tr>
 </table>
 
+![](./image/location1.png)
+![](./image/location2.png)
+![](./image/location3.png)
+![](./image/location4.png)
+
 ### 下周计划
 1. 研究小程序图像处理
 2. 研究如何裁剪选择图片
+3. 完成企业账号的注册
