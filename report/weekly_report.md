@@ -56,7 +56,6 @@
 ![](./image/location1.PNG)
 ![](./image/location2.PNG)
 ![](./image/location3.PNG)
-![](./image/location4.PNG)
 
 ### 下周计划
 1. 研究小程序图像处理
