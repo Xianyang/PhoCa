@@ -30,7 +30,9 @@
   	<td>上传图片</td>
   </tr>
 </table>
-![image1.PNG](./image/image1.png)
+
+![](./image/image1.png)
+![](./image1.png)
 
   5. 定位功能
 
