@@ -1,3 +1,3 @@
 # tcl_wxapp
 
-[Weekly report](./report/weekly report.md)
+[Weekly report](./report/weekly_report.md)
