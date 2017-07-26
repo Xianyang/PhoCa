@@ -31,8 +31,8 @@
   </tr>
 </table>
 
-![](./image/image1 copy.png)
-![](./image/image1 copy.png)
+![](./image/image1copy.png)
+![](./image/image1copy.png)
 
   5. 定位功能
 
