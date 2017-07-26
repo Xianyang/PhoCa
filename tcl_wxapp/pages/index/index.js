@@ -2,7 +2,7 @@
 //获取应用实例
 var app = getApp()
 
-const uploadFileUrl = "http://photo.tclrd.com.hk/api/image"
+const uploadFileUrl = "http://photo.tclrd.com.hk/szapi/upload"
 
 Page({
   data: {
@@ -45,7 +45,6 @@ Page({
       url: uploadFileUrl,
       filePath: imageSrc,
       name: "123",
-      imageid: "123",
       success: function(res) {
         console.log("uploadImage success, res is:", res)
         wx.showToast({
