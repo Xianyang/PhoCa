@@ -13,7 +13,9 @@ Page({
   },
   chooseImage: function() {
     var self = this
-
+    // wx.navigateTo({
+    //   url: "../imageViewer/imageViewer",
+    // })
     wx.chooseImage({
       count: 1,
       sizeType: ["compressed"],
@@ -38,15 +40,19 @@ Page({
       uploadimageBtnLoading: true,
     })
 
-    console.log(imageSrc)
-    console.log(uploadFileUrl)
+    console.log("image path is " + imageSrc)
+    var time = new Date().getTime().toString()
+    console.log("image name is " + time)
 
     wx.uploadFile({
       url: uploadFileUrl,
       filePath: imageSrc,
-      name: "123",
+      name: time,
       success: function(res) {
         console.log("uploadImage success, res is:", res)
+        wx.navigateTo({
+          url: "../imageViewer/imageViewer",
+        })
         wx.showToast({
           title: "上传成功",
           icon: "success",

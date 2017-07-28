@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/getLocation/getLocation",
     "pages/locationMap/locationMap",
-    "pages/locationPicker/locationPicker"
+    "pages/locationPicker/locationPicker",
+    "pages/imageViewer/imageViewer"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,20 +24,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "image",
-        "iconPath": "./icon/image.png",
-        "selectedIconPath": "./icon/image_selected.png"
+        "iconPath": "./images/image.png",
+        "selectedIconPath": "./images/image_selected.png"
       },
       {
         "pagePath": "pages/location/location",
         "text": "location",
-        "iconPath": "./icon/location.png",
-        "selectedIconPath": "./icon/location_selected.png"
+        "iconPath": "./images/location.png",
+        "selectedIconPath": "./images/location_selected.png"
       },
       {
         "pagePath": "pages/pay/pay",
         "text": "pay",
-        "iconPath": "./icon/pay.png",
-        "selectedIconPath": "./icon/pay_selected.png"
+        "iconPath": "./images/pay.png",
+        "selectedIconPath": "./images/pay_selected.png"
       }
     ]
   },

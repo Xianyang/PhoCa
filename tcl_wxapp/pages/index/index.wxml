@@ -21,5 +21,4 @@
 
   <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadimageBtnLoading}}" bindtap="uploadImage"> Upload the image</button>
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
-
 </view>

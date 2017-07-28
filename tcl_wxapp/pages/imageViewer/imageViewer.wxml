@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">Process Image</view>
+    <view class="page-head-line"></view>
+  </view>
+
+  <view class="page-body">
+    <block wx:if="{{imageSrc}}">
+      <image src="{{imageSrc}}" class="image" mode="aspectFit"></image>
+    </block>
+  </view>
+  
+  <scroll-view class="scroll-view" scroll-x="true" bindscroll="scroll">
+    <!--<image style="color:{{haha?red:green}}" class="scroll-image" id="option0" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>-->
+
+    <image wx:if="{{isChosen[0]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option0" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option0" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:if="{{isChosen[1]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option1" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option1" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:if="{{isChosen[2]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option2" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option2" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:if="{{isChosen[3]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option3" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option3" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:if="{{isChosen[4]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option4" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option4" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:if="{{isChosen[5]}}" style="box-sizing:border-box;border: #257EF1 6rpx solid" class="scroll-image" id="option5" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image wx:else class="scroll-image" id="option5" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    
+    
+  </scroll-view>
+</view>
