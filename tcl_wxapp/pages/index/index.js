@@ -10,10 +10,6 @@ Page({
     uploadImageBtnDisabled: true,
     uploadimageBtnLoading: false,
     chooseImageBtnDisabled: false,
-    borderColors: ["red", "blue"],
-    borderColor: "red",
-    borderWidth: "6rpx",
-    borderStyle: "dashed",
   },
   chooseImage: function() {
     var self = this
