@@ -18,5 +18,9 @@
     <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[3]}}" class="scroll-image" id="option3" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
     <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[4]}}" class="scroll-image" id="option4" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
     <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[5]}}" class="scroll-image" id="option5" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[6]}}" class="scroll-image" id="option6" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[7]}}" class="scroll-image" id="option7" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[8]}}" class="scroll-image" id="option8" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
+    <image style="box-sizing:border-box;border: #257EF1 6rpx;border-style:{{borderStyles[9]}}" class="scroll-image" id="option9" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
   </scroll-view>
 </view>

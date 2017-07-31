@@ -11,29 +11,38 @@ Page({
     "../../images/minions_4.jpeg",
     "../../images/minions_5.jpeg",
     "../../images/minions_6.jpeg",
+    "../../images/minions_7.jpeg",
+    "../../images/minions_8.jpeg",
+    "../../images/minions_9.jpeg",
+    "../../images/minions_10.jpeg",
     ],
-    isChosen: [true, false, false, false, false, false],
-    borderStyles: ["solid", "hidden", "hidden", "hidden", "hidden", "hidden"],
+    preChosen: 0,
+    isChosen: [true],
+    borderStyles: ["solid"],
+  },
+  onLoad: function() {
   },
   optionChosen: function(e) {
     var that = this
     var optionArray = that.data.isChosen;
     var borderArray = that.data.borderStyles;
+    var preChosen = that.data.preChosen;
+
     var object_id = e.currentTarget.id.slice(-1);
     if (optionArray[object_id]) {
       return
     }
 
-    console.log(optionArray)
-    for (var i = 0; i < optionArray.length; i++) {
-      optionArray[i] = false
-      borderArray[i] = "hidden"
-    }
+    // set new data
+    console.log("user choses option " + object_id)
+    optionArray[preChosen] = false
     optionArray[object_id] = true
+    borderArray[preChosen] = "hidden"
     borderArray[object_id] = "solid"
     that.setData({
       isChosen: optionArray,
       borderStyles: borderArray,
+      preChosen: object_id,
       imageSrc: that.data.minions[object_id]
     })
   },
