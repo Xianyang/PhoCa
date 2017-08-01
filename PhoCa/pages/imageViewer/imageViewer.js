@@ -34,7 +34,7 @@ Page({
     }
 
     // set new data
-    console.log("user choses option " + object_id)
+    console.log("user chooses option " + object_id)
     optionArray[preChosen] = false
     optionArray[object_id] = true
     borderArray[preChosen] = "hidden"
