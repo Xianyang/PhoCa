@@ -7,7 +7,8 @@
     "pages/getLocation/getLocation",
     "pages/locationMap/locationMap",
     "pages/locationPicker/locationPicker",
-    "pages/imageViewer/imageViewer"
+    "pages/imageViewer/imageViewer",
+    "pages/imageCropper/imageCropper"
   ],
   "window": {
     "backgroundTextStyle": "light",
