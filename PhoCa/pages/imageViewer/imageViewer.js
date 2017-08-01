@@ -18,14 +18,12 @@ Page({
     ],
     preChosen: 0,
     isChosen: [true],
-    borderStyles: ["solid"],
   },
   onLoad: function() {
   },
   optionChosen: function(e) {
     var that = this
     var optionArray = that.data.isChosen;
-    var borderArray = that.data.borderStyles;
     var preChosen = that.data.preChosen;
 
     var object_id = e.currentTarget.id.slice(-1);
@@ -37,11 +35,8 @@ Page({
     console.log("user chooses option " + object_id)
     optionArray[preChosen] = false
     optionArray[object_id] = true
-    borderArray[preChosen] = "hidden"
-    borderArray[object_id] = "solid"
     that.setData({
       isChosen: optionArray,
-      borderStyles: borderArray,
       preChosen: object_id,
       imageSrc: that.data.minions[object_id]
     })
