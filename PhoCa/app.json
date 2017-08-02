@@ -8,7 +8,8 @@
     "pages/locationMap/locationMap",
     "pages/locationPicker/locationPicker",
     "pages/imageViewer/imageViewer",
-    "pages/imageCropper/imageCropper"
+    "pages/imageCropper/imageCropper",
+    "pages/imagePicker/imagePicker"
   ],
   "window": {
     "backgroundTextStyle": "light",

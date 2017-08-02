@@ -77,32 +77,6 @@ var createClass = function () {
   };
 }();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var slicedToArray = function () {
   function sliceIterator(arr, i) {
     var _arr = [];

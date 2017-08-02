@@ -19,7 +19,13 @@ Page({
     preChosen: 0,
     isChosen: [true],
   },
-  onLoad: function() {
+  onLoad (option) {
+    let { avatar } = option
+    if (avatar) {
+      this.setData({
+        imageSrc: avatar
+      })
+    }
   },
   optionChosen: function(e) {
     var that = this

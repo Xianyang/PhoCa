@@ -1,66 +1,95 @@
-// imageCropper.js
+import weCropper from '../../dist/weCropper.js'
+
+const device = wx.getSystemInfoSync()
+const width = device.windowWidth
+const height = device.windowHeight - 50
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-  
+  data:  {
+  	cropperOpt: {
+			id: 'cropper',
+			width,
+			height,
+			scale: 2.5,
+			zoom: 8,
+			cut: {
+				x: (width - 300) / 2,
+				y: (height - 300) / 2,
+				width: 300,
+				height: 300
+			}
+		}
+	},
+  touchStart (e) {
+    this.wecropper.touchStart(e)
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  touchMove (e) {
+    this.wecropper.touchMove(e)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  touchEnd (e) {
+    this.wecropper.touchEnd(e)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  getCropperImage () {
+    this.wecropper.getCropperImage((avatar) => {
+      if (avatar) {
+        //  获取到裁剪后的图片
+        console.log("go back")
+        wx.redirectTo({
+          url: `../imagePicker/imagePicker?avatar=${avatar}`,
+          // 接口调用成功的回调函数
+          success: function (res) {
+            console.log(res)
+          },
+          // 接口调用失败的回调函数
+          fail: function (err) {
+            console.log(err)
+          }
+        })
+      } else {
+        console.log('获取图片失败，请稍后重试')
+      }
+    })
   },
+  chooseImage () {
+  	const self = this
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success (res) {
+        let src = res.tempFilePaths[0]
+        //  获取裁剪图片资源后，给data添加src属性及其值
+
+				self.wecropper.pushOrign(src)
+      }
+    })
   },
+  onLoad (option) {
+    // do something
+		const { cropperOpt } = this.data
+    const { src } = option
+    if (src) {
+      Object.assign(cropperOpt, { src })
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+			new weCropper(cropperOpt)
+				.on('ready', function (ctx) {
+					console.log(`wecropper is ready for work!`)
+				})
+				.on('beforeImageLoad', (ctx) => {
+					console.log(`before picture loaded, i can do something`)
+					console.log(`current canvas context:`, ctx)
+					wx.showToast({
+						title: '上传中',
+						icon: 'loading',
+						duration: 20000
+					})
+				})
+				.on('imageLoad', (ctx) => {
+					console.log(`picture loaded`)
+					console.log(`current canvas context:`, ctx)
+					wx.hideToast()
+				})
+    }
   }
 })

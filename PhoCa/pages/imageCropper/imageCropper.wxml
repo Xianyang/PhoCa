@@ -1,2 +1,17 @@
-<!--imageCropper.wxml-->
-<text>imageCropper.wxml</text>
+<import src="../../dist/weCropper.wxml"/>
+
+<view class="cropper-wrapper">
+    <template is="weCropper" data="{{...cropperOpt}}"/>
+    <view class="cropper-buttons">
+        <view
+                class="choose"
+                bindtap="chooseImage">
+            重新选择
+        </view>
+        <view
+                class="getCropperImage"
+                bindtap="getCropperImage">
+            确定
+        </view>
+    </view>
+</view>

@@ -1,24 +1,9 @@
-<!--index.wxml-->
 <view class="container">
   <view class="page-head">
-    <view class="page-head-title">Upload Image</view>
+    <view class="page-head-title">Image</view>
     <view class="page-head-line"></view>
   </view>
+  
+  <button type="primary" bindtap="uploadImage">demo</button>
 
-  <view class="page-body">
-    <block wx:if="{{imageSrc}}">
-      <image src="{{imageSrc}}" class="image" mode="aspectFit"></image>
-    </block>
-
-    <block wx:else>
-      <view class="image-plus" bindtap="chooseImage">
-        <view class="image-plus-horizontal"></view>
-        <view class="image-plus-vertical"></view>
-      </view>
-      <view class="image-plus-text" bindtap="chooseImage">选择图片</view>
-    </block>
-  </view>
-
-  <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadimageBtnLoading}}" bindtap="uploadImage"> Upload the image</button>
-  <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
 </view>
