@@ -9,7 +9,8 @@
     "pages/locationPicker/locationPicker",
     "pages/imageViewer/imageViewer",
     "pages/imageCropper/imageCropper",
-    "pages/imagePicker/imagePicker"
+    "pages/imagePicker/imagePicker",
+    "pages/facepp/facepp"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -45,7 +46,7 @@
   },
   "networkTimeout": {
     "request": 10000,
-    "downloadFile": 10000,
-    "uploadFile": 10000
+    "downloadFile": 30000,
+    "uploadFile": 30000
   }
 }

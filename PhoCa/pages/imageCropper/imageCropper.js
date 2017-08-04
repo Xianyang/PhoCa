@@ -35,7 +35,7 @@ Page({
         //  获取到裁剪后的图片
         console.log("go back")
         wx.redirectTo({
-          url: `../imagePicker/imagePicker?avatar=${avatar}`,
+          url: `../facepp/facepp?avatar=${avatar}`,
           // 接口调用成功的回调函数
           success: function (res) {
             console.log(res)

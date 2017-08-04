@@ -1,14 +1,13 @@
 //index.js
 //获取应用实例
 var app = getApp()
-
-const uploadFileUrl = "http://photo.tclrd.com.hk/szapi/upload"
+const uploadToTCLUrl = "http://photo.tclrd.com.hk/szapi/upload"
 
 Page({
   data: {
     imageSrc: "",
     uploadImageBtnDisabled: true,
-    uploadimageBtnLoading: false,
+    uploadToTCLLoading: false,
     chooseImageBtnDisabled: false,
   },
   onLoad (option) {
@@ -22,9 +21,6 @@ Page({
   },
   chooseImage: function() {
     var self = this
-    // wx.navigateTo({
-    //   url: "../imageViewer/imageViewer",
-    // })
     wx.chooseImage({
       count: 1,
       sizeType: ["compressed"],
@@ -46,12 +42,12 @@ Page({
       }
     })
   },
-  uploadImage: function() {
-    console.log("start uploading the image")
+  uploadImageToTcl: function() {
+    console.log("start uploading the image to tcl")
     var self = this
     var imageSrc = self.data.imageSrc
     self.setData ({
-      uploadimageBtnLoading: true,
+      uploadToTCLLoading: true,
     })
 
     console.log("image path is " + imageSrc)
@@ -59,9 +55,9 @@ Page({
     console.log("image name is " + time)
 
     wx.uploadFile({
-      url: uploadFileUrl,
+      url: uploadToTCLUrl,
       filePath: imageSrc,
-      name: time,
+      name: "anything",
       success: function(res) {
         console.log("uploadImage success, res is:", res)
         wx.navigateTo({
@@ -73,7 +69,7 @@ Page({
           duration: 1000
         })
         self.setData ({
-          uploadimageBtnLoading: false,
+          uploadToTCLLoading: false,
         })
       },
       fail: function({errMsg}) {
@@ -84,9 +80,9 @@ Page({
           duration: 1000
         })
         self.setData ({
-          uploadimageBtnLoading: false,
+          uploadToTCLLoading: false,
         })
       }
-  })
+    })
   },
 })

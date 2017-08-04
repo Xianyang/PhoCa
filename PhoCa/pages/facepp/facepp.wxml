@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="page-head">
-    <view class="page-head-title">Upload Image</view>
+    <view class="page-head-title">Detect Image</view>
     <view class="page-head-line"></view>
   </view>
 
@@ -18,8 +18,7 @@
       <view class="image-plus-text" bindtap="chooseImage">选择图片</view>
     </block>
   </view>
-
-
-  <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadToTCLLoading}}" bindtap="uploadImageToTcl"> Upload to TCL</button>
+  <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadToFaceppLoading}}" bindtap="uploadImageToFacepp">Recognize the pic</button>
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
+  <text class="result_text">{{detect_result}}</text>
 </view>
