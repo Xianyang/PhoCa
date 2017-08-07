@@ -20,5 +20,5 @@
   </view>
   <button type="primary" disabled="{{uploadImageBtnDisabled}}" loading="{{uploadToFaceppLoading}}" bindtap="uploadImageToFacepp">Recognize the pic</button>
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
-  <text class="result_text">{{detect_result}}</text>
+  <text class="result_text">{{detect_object_result}}</text>
 </view>

@@ -6,6 +6,7 @@ const height = device.windowHeight - 50
 
 Page({
   data:  {
+    backPage: "",
   	cropperOpt: {
 			id: 'cropper',
 			width,
@@ -33,9 +34,9 @@ Page({
     this.wecropper.getCropperImage((avatar) => {
       if (avatar) {
         //  获取到裁剪后的图片
-        console.log("go back")
+        console.log("go back to previous page")
         wx.redirectTo({
-          url: `../facepp/facepp?avatar=${avatar}`,
+          url: `../${this.data.backPage}/${this.data.backPage}?avatar=${avatar}`,
           // 接口调用成功的回调函数
           success: function (res) {
             console.log(res)
@@ -69,6 +70,9 @@ Page({
     // do something
 		const { cropperOpt } = this.data
     const { src } = option
+    this.setData({
+      backPage: option.backPage,
+    })
     if (src) {
       Object.assign(cropperOpt, { src })
 

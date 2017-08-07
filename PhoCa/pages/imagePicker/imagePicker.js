@@ -34,7 +34,7 @@ Page({
 
         const src = res.tempFilePaths[0]
         wx.redirectTo({
-          url: `../imageCropper/imageCropper?src=${src}`
+          url: `../imageCropper/imageCropper?src=${src}&backPage=imagePicker`
         })
       },
       fail: function({errMsg}) {

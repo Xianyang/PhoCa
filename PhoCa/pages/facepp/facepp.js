@@ -6,22 +6,19 @@ const uploadToFaceppObjectDetectionUrl = "https://api-cn.faceplusplus.com/imagep
 const faceppApiKey = "vQBn8Zwg8a5ghGhhlFGIoc3qyA_sYdat"
 const faceppApiSecret = "GgtEbbVFBlSijwGiuv4mc8gO8WgWEfM6"
 
-
-
 Page({
   data: {
     imageSrc: "",
     imageAVUrl: "",
+    detect_object_result: "",
+    detect_scene_result: "",
     detect_result: "",
     uploadImageBtnDisabled: true,
     uploadToFaceppLoading: false,
     chooseImageBtnDisabled: false,
   },
-  onLoad (option) {
-    var self = this
-    var avatar = option.avatar
-    if (avatar) {
-      console.log('got the image from cropper')
+  getImageUrl: function (image) {
+      var self = this
       wx.showLoading({
         title: 'Loading...',
       })
@@ -29,18 +26,24 @@ Page({
       // upload the image to leancloud
       new AV.File('file-name', {
         blob: {
-          uri: avatar,
+          uri: image,
         },
       }).save().then((file) => {
         // file => console.log(file.url()),
         console.log('image url on leancloud is ' + file.url())
         wx.hideLoading()
         self.setData({
-          imageSrc: avatar,
+          imageSrc: image,
           uploadImageBtnDisabled: false,
           imageAVUrl: file.url(),
         })
       }).catch(console.error);
+  },
+  onLoad (option) {
+    var avatar = option.avatar
+    if (avatar) {
+      console.log('got the image from cropper')
+      this.getImageUrl(avatar)
     }
   },
   chooseImage: function() {
@@ -53,7 +56,7 @@ Page({
         const src = res.tempFilePaths[0]
         console.log("chooseImage success, temp path is", src)
         wx.redirectTo({
-          url: `../imageCropper/imageCropper?src=${src}`
+          url: `../imageCropper/imageCropper?src=${src}&backPage=facepp`
         })
       },
       fail: function({errMsg}) {
@@ -63,17 +66,14 @@ Page({
   },
   uploadImageToFacepp: function() {
     console.log("start uploading the image to face plus plus")
-    // wx.showLoading({
-    //   title: 'Loading...',
-    // })
     var self = this
     var imageUrl = self.data.imageAVUrl
     self.setData ({
       uploadToFaceppLoading: true,
+      detect_object_result: "",
+      detect_scene_result: "",
       detect_result: "",
     })
-
-    console.log("image url is " + imageUrl)
 
     wx.request({
       url: uploadToFaceppObjectDetectionUrl,
@@ -88,22 +88,21 @@ Page({
         'image_url': imageUrl
       },
       success: function(res) {
-        // wx.hideLoading()
+        // show the result
         if (res.data.objects.length > 0) {
           console.log(res.data)
           wx.hideLoading()
           self.setData ({
             uploadToFaceppLoading: false,
-            detect_result: res.data.objects[0].value
+            detect_object_result: res.data.objects[0].value
           })
         } else {
           console.log("no object in the picture")
           self.setData ({
             uploadToFaceppLoading: false,
-            detect_result: "can not detect an object in the picture"
+            detect_object_result: "can not detect an object in the picture"
           })
         }
-        
       },
       fail: function({errMsg}) {
         // wx.hideLoading()
