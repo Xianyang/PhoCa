@@ -16,6 +16,20 @@ Page({
     detect_object_result: "",
     detect_scene_result: "",
     detect_result: "",
+    scrollHidden: true,
+    minions: ["../../images/minions_1.jpeg",
+    "../../images/minions_2.jpeg",
+    "../../images/minions_3.jpeg",
+    "../../images/minions_4.jpeg",
+    "../../images/minions_5.jpeg",
+    "../../images/minions_6.jpeg",
+    "../../images/minions_7.jpeg",
+    "../../images/minions_8.jpeg",
+    "../../images/minions_9.jpeg",
+    "../../images/minions_10.jpeg",
+    ],
+    preChosen: 0,
+    isChosen: [true],
   },
   onLoad (option) {
     var avatar = option.avatar
@@ -23,6 +37,14 @@ Page({
       console.log('got the image from cropper')
       this.getImageUrl(avatar)
     }
+  },
+  clearResult: function () {
+    this.setData({
+      detect_object_result: "",
+      detect_scene_result: "",
+      detect_result: "",
+      scrollHidden: true,
+    })
   },
   getImageUrl: function (image) {
       var self = this
@@ -55,6 +77,7 @@ Page({
       success: function(res) {
         const src = res.tempFilePaths[0]
         console.log("chooseImage success, temp path is", src)
+        self.clearResult()
         wx.redirectTo({
           url: `../imageCropper/imageCropper?src=${src}&backPage=facepp`
         })
@@ -68,12 +91,10 @@ Page({
     console.log("start uploading the image to face plus plus")
     var self = this
     var imageUrl = self.data.imageAVUrl
+    self.clearResult()
     self.setData ({
       uploadBtnLoading: true,
       chooseImageBtnDisabled: true,
-      detect_object_result: "",
-      detect_scene_result: "",
-      detect_result: "",
     })
 
     wx.request({
@@ -96,14 +117,16 @@ Page({
           self.setData ({
             uploadBtnLoading: false,
             chooseImageBtnDisabled: false,
-            detect_object_result: res.data.objects[0].value
+            detect_object_result: res.data.objects[0].value,
+            scrollHidden: false,
           })
         } else {
           console.log("no object in the picture")
           self.setData ({
             uploadBtnLoading: false,
             chooseImageBtnDisabled: false,
-            detect_object_result: "can not detect an object in the picture"
+            detect_object_result: "can not detect an object in the picture",
+            scrollHidden: false,
           })
         }
       },
@@ -121,5 +144,28 @@ Page({
         })
       }
     })
+  },
+  optionChosen: function(e) {
+    var that = this
+    var optionArray = that.data.isChosen;
+    var preChosen = that.data.preChosen;
+
+    var object_id = e.currentTarget.id.slice(-1);
+    if (optionArray[object_id]) {
+      return
+    }
+
+    // set new data
+    console.log("user chooses option " + object_id)
+    optionArray[preChosen] = false
+    optionArray[object_id] = true
+    that.setData({
+      isChosen: optionArray,
+      preChosen: object_id,
+      imageSrc: that.data.minions[object_id]
+    })
+  },
+  scroll: function(e) {
+    
   },
 })

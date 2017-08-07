@@ -53,3 +53,23 @@ button{
   margin: 20rpx;
   text-align: center;
 }
+
+.scroll-view{
+    white-space: nowrap;
+    margin-top: 20rpx;
+    height: 150rpx;
+    background-color: white;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.scroll-image{
+    display: inline-block;
+    position: relative;
+    top: 0;
+    width: 150rpx;
+    height: 150rpx;
+    margin-right: 6rpx;
+    box-sizing: border-box;
+    border: #257EF1 6rpx solid;
+}
