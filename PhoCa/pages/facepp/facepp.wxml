@@ -22,16 +22,16 @@
   <button type="default" disabled="{{chooseImageBtnDisabled}}" bindtap="chooseImage">Choose an image</button>
   <text class="result_text">{{detect_object_result}}</text>
   <scroll-view class="scroll-view" scroll-x="true" bindscroll="scroll" style="{{scrollHidden?'visibility:hidden':''}}">
-    <image style="{{isChosen[0]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option0" bindtap="optionChosen" src="{{imageSearchResults[0]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[1]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option1" bindtap="optionChosen" src="{{imageSearchResults[1]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[2]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option2" bindtap="optionChosen" src="{{imageSearchResults[2]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[3]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option3" bindtap="optionChosen" src="{{imageSearchResults[3]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[4]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option4" bindtap="optionChosen" src="{{imageSearchResults[4]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[5]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option5" bindtap="optionChosen" src="{{imageSearchResults[5]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[6]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option6" bindtap="optionChosen" src="{{imageSearchResults[6]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[7]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option7" bindtap="optionChosen" src="{{imageSearchResults[7]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[8]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option8" bindtap="optionChosen" src="{{imageSearchResults[8]}}" mode="scaleToFill"></image>
-    <image style="{{isChosen[9]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option9" bindtap="optionChosen" src="{{imageSearchResults[9]}}" mode="scaleToFill"></image>
+    <image style="{{isChosen[0]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option0" bindtap="optionChosen" src="{{imageSearchResults[0]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[1]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option1" bindtap="optionChosen" src="{{imageSearchResults[1]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[2]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option2" bindtap="optionChosen" src="{{imageSearchResults[2]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[3]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option3" bindtap="optionChosen" src="{{imageSearchResults[3]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[4]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option4" bindtap="optionChosen" src="{{imageSearchResults[4]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[5]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option5" bindtap="optionChosen" src="{{imageSearchResults[5]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[6]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option6" bindtap="optionChosen" src="{{imageSearchResults[6]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[7]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option7" bindtap="optionChosen" src="{{imageSearchResults[7]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[8]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option8" bindtap="optionChosen" src="{{imageSearchResults[8]}}" mode="aspectFit"></image>
+    <image style="{{isChosen[9]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option9" bindtap="optionChosen" src="{{imageSearchResults[9]}}" mode="aspectFitwe"></image>
   </scroll-view>
 
 </view>

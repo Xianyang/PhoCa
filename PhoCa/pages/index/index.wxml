@@ -4,8 +4,8 @@
     <view class="page-head-line"></view>
   </view>
   
-  <button type="default" bindtap="showDemo">Image Upload</button>
-  <button type="default" bindtap="showFacepp">Image Recognition</button>
+  <button type="default" bindtap="showDemo">Upload an Image</button>
+  <button type="default" bindtap="showFacepp">Search an Image</button>
 
 
 </view>
