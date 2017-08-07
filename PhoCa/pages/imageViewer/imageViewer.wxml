@@ -22,6 +22,5 @@
     <image style="{{isChosen[7]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option7" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
     <image style="{{isChosen[8]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option8" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
     <image style="{{isChosen[9]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option9" bindtap="optionChosen" src="/images/landscape.png" mode="scaleToFill"></image>
-    
   </scroll-view>
 </view>

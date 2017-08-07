@@ -10,12 +10,19 @@ Page({
   data: {
     imageSrc: "",
     imageAVUrl: "",
+    uploadBtnDisabled: true,
+    uploadBtnLoading: false,
+    chooseImageBtnDisabled: false,
     detect_object_result: "",
     detect_scene_result: "",
     detect_result: "",
-    uploadImageBtnDisabled: true,
-    uploadToFaceppLoading: false,
-    chooseImageBtnDisabled: false,
+  },
+  onLoad (option) {
+    var avatar = option.avatar
+    if (avatar) {
+      console.log('got the image from cropper')
+      this.getImageUrl(avatar)
+    }
   },
   getImageUrl: function (image) {
       var self = this
@@ -34,17 +41,10 @@ Page({
         wx.hideLoading()
         self.setData({
           imageSrc: image,
-          uploadImageBtnDisabled: false,
+          uploadBtnDisabled: false,
           imageAVUrl: file.url(),
         })
       }).catch(console.error);
-  },
-  onLoad (option) {
-    var avatar = option.avatar
-    if (avatar) {
-      console.log('got the image from cropper')
-      this.getImageUrl(avatar)
-    }
   },
   chooseImage: function() {
     var self = this
@@ -69,7 +69,8 @@ Page({
     var self = this
     var imageUrl = self.data.imageAVUrl
     self.setData ({
-      uploadToFaceppLoading: true,
+      uploadBtnLoading: true,
+      chooseImageBtnDisabled: true,
       detect_object_result: "",
       detect_scene_result: "",
       detect_result: "",
@@ -93,13 +94,15 @@ Page({
           console.log(res.data)
           wx.hideLoading()
           self.setData ({
-            uploadToFaceppLoading: false,
+            uploadBtnLoading: false,
+            chooseImageBtnDisabled: false,
             detect_object_result: res.data.objects[0].value
           })
         } else {
           console.log("no object in the picture")
           self.setData ({
-            uploadToFaceppLoading: false,
+            uploadBtnLoading: false,
+            chooseImageBtnDisabled: false,
             detect_object_result: "can not detect an object in the picture"
           })
         }
@@ -113,7 +116,8 @@ Page({
           duration: 1000
         })
         self.setData ({
-          uploadToFaceppLoading: false,
+          uploadBtnLoading: false,
+          chooseImageBtnDisabled: false,
         })
       }
     })
