@@ -5,6 +5,9 @@ const AV = require('../../utils/av-live-query-weapp-min.js')
 const uploadToFaceppObjectDetectionUrl = "https://api-cn.faceplusplus.com/imagepp/beta/detectsceneandobject"
 const faceppApiKey = "vQBn8Zwg8a5ghGhhlFGIoc3qyA_sYdat"
 const faceppApiSecret = "GgtEbbVFBlSijwGiuv4mc8gO8WgWEfM6"
+const googleCustomSearchUrl = "https://www.googleapis.com/customsearch/v1"
+const googleCustomSearchKey = "AIzaSyAljP8hMCeAuY6h6Jl2I4CUGHCPVVsmbf8"
+const gogoleCustomSearchCx = "003254118020475787427:jgng_p5tzc0"
 
 Page({
   data: {
@@ -30,6 +33,7 @@ Page({
     ],
     preChosen: 0,
     isChosen: [true],
+    imageSearchResults: [],
   },
   onLoad (option) {
     var avatar = option.avatar
@@ -113,6 +117,8 @@ Page({
         // show the result
         if (res.data.objects.length > 0) {
           console.log(res.data)
+          var object_result = res.data.objects[0].value
+          self.searchGoogleForImages(object_result)
           wx.hideLoading()
           self.setData ({
             uploadBtnLoading: false,
@@ -126,7 +132,7 @@ Page({
             uploadBtnLoading: false,
             chooseImageBtnDisabled: false,
             detect_object_result: "can not detect an object in the picture",
-            scrollHidden: false,
+            scrollHidden: true,
           })
         }
       },
@@ -145,10 +151,39 @@ Page({
       }
     })
   },
+  searchGoogleForImages: function(query) {
+    var self = this
+    wx.request({
+      url: googleCustomSearchUrl,
+      header: {
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      data: {
+        'key': googleCustomSearchKey,
+        'cx': gogoleCustomSearchCx,
+        'q': query
+      },
+      success: function(res) {
+        if (res.statusCode == 200) {
+          console.log("google return 10 items")
+          var urlResults = []
+          for (var i = 0; i < 10; i++) {
+            urlResults[i] = res.data.items[i].pagemap.cse_image[0].src
+          }
+          self.setData({
+            imageSearchResults: urlResults
+          })
+        }
+      },
+      fail: function({errMsg}) {
+
+      }
+    })
+  },
   optionChosen: function(e) {
-    var that = this
-    var optionArray = that.data.isChosen;
-    var preChosen = that.data.preChosen;
+    var self = this
+    var optionArray = self.data.isChosen;
+    var preChosen = self.data.preChosen;
 
     var object_id = e.currentTarget.id.slice(-1);
     if (optionArray[object_id]) {
@@ -159,10 +194,11 @@ Page({
     console.log("user chooses option " + object_id)
     optionArray[preChosen] = false
     optionArray[object_id] = true
-    that.setData({
+    self.setData({
       isChosen: optionArray,
       preChosen: object_id,
-      imageSrc: that.data.minions[object_id]
+      // imageSrc: self.data.minions[object_id]
+      imageSrc: self.data.imageSearchResults[object_id]
     })
   },
   scroll: function(e) {
