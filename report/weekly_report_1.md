@@ -31,9 +31,9 @@
   </tr>
 </table>
 
-![](./image/image1.PNG)
-![](./image/image2.PNG)
-![](./image/image3.PNG)
+![](./image/1/image1.PNG)
+![](./image/1/image2.PNG)
+![](./image/1/image3.PNG)
 
   5. 定位功能
 
@@ -53,9 +53,9 @@
   </tr>
 </table>
 
-![](./image/location1.PNG)
-![](./image/location2.PNG)
-![](./image/location3.PNG)
+![](./image/1/location1.PNG)
+![](./image/1/location2.PNG)
+![](./image/1/location3.PNG)
 
 ### 下周计划
 1. 研究小程序图像处理

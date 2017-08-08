@@ -31,7 +31,7 @@
     <image style="{{isChosen[6]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option6" bindtap="optionChosen" src="{{imageSearchResults[6]}}" mode="aspectFit"></image>
     <image style="{{isChosen[7]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option7" bindtap="optionChosen" src="{{imageSearchResults[7]}}" mode="aspectFit"></image>
     <image style="{{isChosen[8]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option8" bindtap="optionChosen" src="{{imageSearchResults[8]}}" mode="aspectFit"></image>
-    <image style="{{isChosen[9]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option9" bindtap="optionChosen" src="{{imageSearchResults[9]}}" mode="aspectFitwe"></image>
+    <image style="{{isChosen[9]?'border-style:solid':'border-style:hidden'}}" class="scroll-image" id="option9" bindtap="optionChosen" src="{{imageSearchResults[9]}}" mode="aspectFit"></image>
   </scroll-view>
 
 </view>

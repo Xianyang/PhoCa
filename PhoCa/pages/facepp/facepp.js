@@ -1,13 +1,7 @@
-//index.js
-//获取应用实例
+//facepp.js
 var app = getApp()
 const AV = require('../../utils/av-live-query-weapp-min.js')
-const uploadToFaceppObjectDetectionUrl = "https://api-cn.faceplusplus.com/imagepp/beta/detectsceneandobject"
-const faceppApiKey = "vQBn8Zwg8a5ghGhhlFGIoc3qyA_sYdat"
-const faceppApiSecret = "GgtEbbVFBlSijwGiuv4mc8gO8WgWEfM6"
-const googleCustomSearchUrl = "https://www.googleapis.com/customsearch/v1"
-const googleCustomSearchKey = "AIzaSyAljP8hMCeAuY6h6Jl2I4CUGHCPVVsmbf8"
-const gogoleCustomSearchCx = "003254118020475787427:jgng_p5tzc0"
+const SERVER_INFO = require('../../utils/info.js').serverInfo
 
 Page({
   data: {
@@ -20,17 +14,6 @@ Page({
     detect_scene_result: "",
     detect_result: "",
     scrollHidden: true,
-    minions: ["../../images/minions_1.jpeg",
-    "../../images/minions_2.jpeg",
-    "../../images/minions_3.jpeg",
-    "../../images/minions_4.jpeg",
-    "../../images/minions_5.jpeg",
-    "../../images/minions_6.jpeg",
-    "../../images/minions_7.jpeg",
-    "../../images/minions_8.jpeg",
-    "../../images/minions_9.jpeg",
-    "../../images/minions_10.jpeg",
-    ],
     preChosen: 0,
     isChosen: [true],
     imageSearchResults: [],
@@ -50,27 +33,27 @@ Page({
       scrollHidden: true,
     })
   },
+  // upload image to LeanCloud and return an url for the image
   getImageUrl: function (image) {
-      var self = this
-      wx.showLoading({
-        title: 'Loading...',
-      })
+    var self = this
+    wx.showLoading({
+      title: 'Loading...',
+    })
 
-      // upload the image to leancloud
-      new AV.File('file-name', {
-        blob: {
-          uri: image,
-        },
-      }).save().then((file) => {
-        // file => console.log(file.url()),
-        console.log('image url on leancloud is ' + file.url())
-        wx.hideLoading()
-        self.setData({
-          imageSrc: image,
-          uploadBtnDisabled: false,
-          imageAVUrl: file.url(),
-        })
-      }).catch(console.error);
+    // upload
+    new AV.File('file-name', {
+      blob: {
+        uri: image,
+      },
+    }).save().then((file) => {
+      console.log('image url on leancloud is ' + file.url())
+      wx.hideLoading()
+      self.setData({
+        imageSrc: image,
+        imageAVUrl: file.url(),
+        uploadBtnDisabled: false,
+      })
+    }).catch(console.error);
   },
   chooseImage: function() {
     var self = this
@@ -94,7 +77,7 @@ Page({
   uploadImageToFacepp: function() {
     console.log("start uploading the image to face plus plus")
     var self = this
-    var imageUrl = self.data.imageAVUrl
+    var imageAVUrl = self.data.imageAVUrl
     self.clearResult()
     self.setData ({
       uploadBtnLoading: true,
@@ -102,16 +85,15 @@ Page({
     })
 
     wx.request({
-      url: uploadToFaceppObjectDetectionUrl,
+      url: SERVER_INFO.uploadToFaceppObjectDetectionUrl,
       method: "POST",
       header: {
-        // 'Content-Type': 'application/json'
         'content-type':'application/x-www-form-urlencoded'
       },
       data: {
-        'api_key':faceppApiKey,
-        'api_secret': faceppApiSecret,
-        'image_url': imageUrl
+        'api_key':SERVER_INFO.faceppApiKey,
+        'api_secret': SERVER_INFO.faceppApiSecret,
+        'image_url': imageAVUrl
       },
       success: function(res) {
         // show the result
@@ -154,13 +136,13 @@ Page({
   searchGoogleForImages: function(query) {
     var self = this
     wx.request({
-      url: googleCustomSearchUrl,
+      url: SERVER_INFO.googleCustomSearchUrl,
       header: {
         'content-type':'application/x-www-form-urlencoded'
       },
       data: {
-        'key': googleCustomSearchKey,
-        'cx': gogoleCustomSearchCx,
+        'key': SERVER_INFO.googleCustomSearchKey,
+        'cx': SERVER_INFO.gogoleCustomSearchCx,
         'q': query
       },
       success: function(res) {
@@ -187,6 +169,7 @@ Page({
 
     var object_id = e.currentTarget.id.slice(-1);
     if (optionArray[object_id]) {
+      // user chooses this option again
       return
     }
 
@@ -197,11 +180,10 @@ Page({
     self.setData({
       isChosen: optionArray,
       preChosen: object_id,
-      // imageSrc: self.data.minions[object_id]
       imageSrc: self.data.imageSearchResults[object_id]
     })
   },
   scroll: function(e) {
-    
+    // nothing to do here
   },
 })
