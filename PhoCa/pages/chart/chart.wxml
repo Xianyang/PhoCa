@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="page-head">
+    <view class="page-head-title">Location</view>
+    <view class="page-head-line"></view>
+  </view>
+  
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="../chart_line/chart_line" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Line Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../chart_column/chart_column" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Column Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../chart_pie/chart_pie" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Pie Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../chart_ring/chart_ring" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Ring Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../chart_area/chart_area" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Area Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+    <navigator url="../chart_radar/chart_radar" class="weui-cell" hover-class="navigator-hover" open-type="navigate">
+      <view class="weui-cell__bd">Rader Chart</view>
+      <view class="weui-cell__ft">></view>
+    </navigator>
+  </view>
+
+</view>
