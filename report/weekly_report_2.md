@@ -126,8 +126,8 @@ if (res.statusCode == 200) {
 ```
 
 #### demo
-![](./image/2/result_1.png)
-![](./image/2/result_2.png)
+![](https://image.ibb.co/iPnfhF/result_1.png)
+![](https://image.ibb.co/mqcfhF/result_2.png)
 
 ---
 
@@ -186,3 +186,5 @@ height: 200,
 
 
 ## 下周计划
+- 优化Google搜索
+- 接入公司数据来绘图
