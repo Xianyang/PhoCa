@@ -52,7 +52,7 @@ wx.chooseImage({
 
 上传成功后即可通过 `file.url()` 获得服务器端图片url
 
----
+-
 
 #### Face++
 [Face++](https://www.faceplusplus.com.cn/)可识别图片中的人脸/物体，这里仅处理了物体，此请求无须申请权限
@@ -93,7 +93,7 @@ https://api-cn.faceplusplus.com/imagepp/v1/recognizetext`
 }
 ```
 
----
+-
 
 #### Google Custom Search
 [Google Custom Search](https://developers.google.com/custom-search/) 可以让用户自定义一个搜索引擎，现在已完成在指定网站进行图片搜索
@@ -129,7 +129,7 @@ if (res.statusCode == 200) {
 ![](./image/2/result_1.png)
 ![](./image/2/result_2.png)
 
----
+-
 
 ### 图表相关
 现可使用 [wx-charts](https://github.com/xiaolin3303/wx-charts) 作图
