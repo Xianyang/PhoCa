@@ -127,5 +127,57 @@ if (res.statusCode == 200) {
 
 
 ### 图表相关
+现可使用 [wx-charts](https://github.com/xiaolin3303/wx-charts) 作图
+
+#### 支持类型
+
+- 饼图   `pie`
+- 圆环图 `ring`
+- 线图   `line`
+- 柱状图 `column`
+- 区域图 `area`
+- 雷达图 `radar`
+
+#### 使用方法
+- 将 `wxcharts.js` 复制到 `utils` 中
+- 在 `.wxml` 中增加一个canvas，如线图 `<canvas canvas-id="lineCanvas"></canvas>`
+- 在 `.js` 中调用 `new wxCharts({})`
+- 所需数据如下
+
+```javascript
+canvasId: 'lineCanvas',
+type: 'line',
+categories: simulationData.categories,
+animation: true,
+background: '#f5f5f5',
+series: [{
+    name: '成交量1',
+    data: simulationData.data,
+    format: function (val, name) {
+        return val.toFixed(2) + '万';
+    }
+}],
+xAxis: {
+    disableGrid: true
+},
+yAxis: {
+    title: '成交金额 (万元)',
+    format: function (val) {
+        return val.toFixed(2);
+    },
+    min: 0
+},
+width: windowWidth,
+height: 200,
+```
+
+#### 例子
+![pieChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/pie.gif)
+![ringChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/ring.gif)
+![lineChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/line.gif)
+![columnChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/column.gif)
+![areaChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/area.gif)
+![tooltip](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/tooltip.gif)
+
 
 ## 下周计划
