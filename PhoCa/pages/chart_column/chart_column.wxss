@@ -1,1 +1,11 @@
-/* chart_column.wxss */
+.title {
+	text-align: center;
+	position: relative;
+	margin-top: 20rpx;
+	margin-bottom: 20rpx;
+}
+.back-btn {
+	position: absolute;
+	left: 20rpx;
+	top: 0;
+}

@@ -1,1 +1,4 @@
-/* chart_ring.wxss */
+/* chart_line.wxss */
+button {
+    margin:20rpx;
+}
