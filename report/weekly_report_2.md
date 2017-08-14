@@ -125,7 +125,10 @@ if (res.statusCode == 200) {
         }
 ```
 
-#### demo
+#### 流程
+![](https://preview.ibb.co/fbgbPv/process_for_image.png)
+
+#### Demo
 ![](https://image.ibb.co/iPnfhF/result_1.png)
 ![](https://image.ibb.co/mqcfhF/result_2.png)
 

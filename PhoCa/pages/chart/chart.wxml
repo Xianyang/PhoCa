@@ -1,6 +1,6 @@
 <view class="container">
   <view class="page-head">
-    <view class="page-head-title">Location</view>
+    <view class="page-head-title">Chart</view>
     <view class="page-head-line"></view>
   </view>
   

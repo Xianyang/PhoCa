@@ -5,15 +5,15 @@ const SERVER_INFO = require('../../utils/info.js').serverInfo
 
 Page({
   data: {
-    imageSrc: "",
-    imageAVUrl: "",
-    uploadBtnDisabled: true,
-    uploadBtnLoading: false,
-    chooseImageBtnDisabled: false,
-    detect_object_result: "",
-    detect_scene_result: "",
-    detect_result: "",
-    scrollHidden: true,
+    imageSrc: "", // 图片本地地址
+    imageAVUrl: "", // 图片在leanCloud上的地址
+    uploadBtnDisabled: true, // 禁用上传按钮
+    uploadBtnLoading: false, // 上传按钮状态
+    chooseImageBtnDisabled: false, // 禁用选择图片按钮
+    detect_object_result: "", // 检测物体结果
+    detect_scene_result: "", // 检测场景结果
+    detect_result: "", // 检测结果
+    scrollHidden: true, // 隐藏
     preChosen: 0,
     isChosen: [true],
     imageSearchResults: [],
