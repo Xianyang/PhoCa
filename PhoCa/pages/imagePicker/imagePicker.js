@@ -60,9 +60,9 @@ Page({
       name: "anything",
       success: function(res) {
         console.log("uploadImage success, res is:", res)
-        wx.navigateTo({
-          url: "../imageViewer/imageViewer",
-        })
+        // wx.navigateTo({
+        //   url: "../imageViewer/imageViewer",
+        // })
         wx.showToast({
           title: "上传成功",
           icon: "success",
