@@ -27,7 +27,7 @@
 ### 基础知识
 > 小程序使用js、wxml、wxss来定义界面和功能
 
-![wx-app-framework-w550](media/15026903108479/wx-app-framework.png)
+![wx-app-framework-w550](http://i.imgur.com/O6lDwDH.png)
 
 - javascript: 定义逻辑层，[基础知识](https://www.w3schools.com/js/default.asp)
 - wxml: 微信定义的文件类型，与html相似，[基础知识](https://www.w3schools.com/html/default.asp)
@@ -49,7 +49,7 @@
     * [x] 让用户选择附近的位置
 
 ### 结构
-![wx-app-structure-w600](media/15026903108479/wx-app-structure.png)
+![wx-app-structure-w600](http://i.imgur.com/QMhMp8o.png)
 
 
 ### 图像相关
@@ -57,7 +57,7 @@
 1. wx-cropper
     > [wx-cropper](https://github.com/dlhandsome/we-cropper) 是一款灵活小巧的canvas图片裁剪器
     
-    ![screenshot-w350](media/15026903108479/screenshot.jpg)
+    ![screenshot-w350](http://i.imgur.com/euQ4f1Q.png)
     
     在此程序中使用了其局部裁剪图片的功能，使用方法如下
     
@@ -223,7 +223,7 @@
 用于可从相册选择照片或拍照，裁剪后程序将识别这张照片中的场景和物体，给出结果并用Google搜索相似的照片
 
 ###### 流程
-![process for image-w800](media/15026903108479/process%20for%20image.png)
+![process for image-w800](http://i.imgur.com/Eo94FOl.png)
 
 ###### 实现
 1. 变量
@@ -386,7 +386,7 @@
         ```
         
 ###### demo
-![demo1-w350](media/15026903108479/demo1.gif)
+![demo1-w350](http://i.imgur.com/iecI7QL.gif)
 
 
 
@@ -397,7 +397,7 @@
 用户可从相册选择照片或拍照，裁剪后可将这张照片上传至TCL的服务器，由于图像选取与裁剪已经介绍，在此只介绍上传至TCL服务器的实现
 
 ###### 流程
-![上传图片流程-w550](media/15026903108479/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%B5%81%E7%A8%8B.png)
+![上传图片流程-w550](http://i.imgur.com/IRduFki.png)
 
 ###### 上传方法的实现
 调用微信API中的`wx.uploadFile()`方法，[官方介绍](https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject)
@@ -422,7 +422,7 @@ wx.uploadFile({
 - `name`: 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
 
 ###### demo
-![demo2-w350](media/15026903108479/demo2.gif)
+![demo2-w350](http://i.imgur.com/wsDnM1F.gif)
 
 
 -----
@@ -519,8 +519,8 @@ wx.chooseLocation({
 ```
 
 #### demo
-![IMG_6250-w300](media/15026903108479/IMG_6250.png)![IMG_6251-w300](media/15026903108479/IMG_6251.png)
-![IMG_6252-w300](media/15026903108479/IMG_6252.png)
+![IMG_6250-w300](http://i.imgur.com/D93bMJT.png)![IMG_6251-w300](http://i.imgur.com/WKWkGSW.png)
+![IMG_6252-w300](http://i.imgur.com/dx305Eg.png)
 
 
 
