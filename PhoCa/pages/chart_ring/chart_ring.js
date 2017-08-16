@@ -61,7 +61,7 @@ Page({
             }, {
                 name: '成交量4',
                 data: 63,
-                 stroke: false
+                stroke: false
             }],
             disablePieStroke: true,
             width: windowWidth,
@@ -73,8 +73,8 @@ Page({
         ringChart.addEventListener('renderComplete', () => {
             console.log('renderComplete');
         });
-        setTimeout(() => {
-            ringChart.stopAnimation();
-        }, 500);
+        // setTimeout(() => {
+        //     ringChart.stopAnimation();
+        // }, 500);
     }
 });

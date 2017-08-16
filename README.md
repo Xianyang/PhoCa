@@ -5,3 +5,6 @@
 
 
 [2017-08-11 weekly report](./report/weekly_report_2.md)
+
+[Specifications](./report/Specifications for wx-app.md)
+

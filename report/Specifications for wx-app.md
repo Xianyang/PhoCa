@@ -1,10 +1,10 @@
 # Specifications for wx-app
-`Luo Xianyang` `2017-08-16`
+`LUO XIANYANG` `2017-08-16`
 
 ## 基本设置
 - 登录[微信公众平台](https://mp.weixin.qq.com/)，进入后台管理界面，需使用管理员的微信号扫描二维码来验证
-- 在`设置->开发设置->开发者ID`处获取AppID
 - 阅读[开发文档](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/MINA.html)
+- 在`设置->开发设置->开发者ID`处获取`AppID`用于创建本地小程序
 
 ## 开发准备
 ### 工具
@@ -13,26 +13,34 @@
     - 需使用管理员/开发者的微信账号登录，并输入`AppID`来创建一个工程
     - 原生工具，开发界面不友好
     - 主要用于预览、编译、上传
-- Egret wing
+- Egret Wing
     - [下载链接](https://www.egret.com/products/wing.html)
     - 第三方工具，开发界面友好
     - 主要用于编写代码以及版本控制
+- Postman
+
+    > Postman makes API development faster, easier, and better
+    
+    - [下载链接](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
+    - 用于测试http请求
     
 ### 基础知识
 > 小程序使用js、wxml、wxss来定义界面和功能
 
-![wx-app-framework-w600](media/15026903108479/wx-app-framework.png)
+![wx-app-framework-w550](media/15026903108479/wx-app-framework.png)
 
 - javascript: 定义逻辑层，[基础知识](https://www.w3schools.com/js/default.asp)
 - wxml: 微信定义的文件类型，与html相似，[基础知识](https://www.w3schools.com/html/default.asp)
 - wxss: 微信定义的文件类型，月css相似，[基础知识](https://www.w3schools.com/css/default.asp)
 
 ## 进度
+### 功能
 1. 图像相关
     * [x] 图像上传至TCL服务器
-    * [x] 图像上传至LeanCloud并返回url
-    * [x] 使用Face++进行图像中`物品`与`场景`的识别
+    * [x] 图像上传至LeanCloud并返回 *url*
+    * [x] 使用Face++进行图像中`物体`与`场景`的识别
     * [x] 使用Google Custom Search搜索相似的物体并展示
+    * [x] 图像本地裁剪
 2. 图表相关
     * [x] 使用数据生成对应图表
 3. 位置相关
@@ -45,13 +53,12 @@
 
 
 ### 图像相关
-
 #### 第三方组件
 1. wx-cropper
     > [wx-cropper](https://github.com/dlhandsome/we-cropper) 是一款灵活小巧的canvas图片裁剪器
     
     ![screenshot-w350](media/15026903108479/screenshot.jpg)
-
+    
     在此程序中使用了其局部裁剪图片的功能，使用方法如下
     
     **克隆wx-cropper到项目地址**
@@ -65,9 +72,9 @@
     **将其加到需要使用的文件中**
     
     ```javascript
-    var weCropper = require('dist/weCropper')
+    var weCropper = require('utils/weCropper')
 
-    import weCropper from 'dist/weCropper'
+    import weCropper from 'utils/weCropper'
     ```
     
     **在`onLoad()`函数中将其实例化**
@@ -90,15 +97,17 @@
         }
       })
     ```
+    
+    详细方法参见 `pages/imageCropper/imageCropper.js`
 
 2. LeanCloud
     > [LeanCloud](https://leancloud.cn/)是领先的移动服务端整体解决方案提供商，
     
-    它现在的图片后台，用来存储图片并生成图片url，步骤如下
+    它现在的图片服务器，用来存储图片并生成能读取图片的url，步骤如下
 
     ##### 创建应用
-    - 登录LeanCloud控制台创建一个新应用
-    - 在`应用设置->设置->应用key`中获取 `App ID` & `App Key`
+    1. 登录LeanCloud控制台创建一个新应用
+    2. 在`应用设置->设置->应用key`中获取 `App ID` & `App Key`
     
     ##### 安装与初始化
     1. 下载 [av-weapp-min.js](https://unpkg.com/leancloud-storage@%5E3.0.0-alpha/dist/av-weapp-min.js) 并移动到utils目录
@@ -114,7 +123,7 @@
     ```
     
     ##### 图片上传
-    在 `wx.chooseImage` 的 `success` 中调用一下代码
+    在 `wx.chooseImage` 的 `success()` 中调用以下代码
     
     ```javascript
     wx.chooseImage({
@@ -134,16 +143,16 @@
     });
     ```
     
-    上传成功后即可通过 `file.url()` 获得服务器端图片url
+    上传成功后即可通过 `file.url()` 获得服务器端图片 *url*。 详细方法参见 `pages/facepp/facepp.js`
     
 3. Face++
     > [Face++](https://www.faceplusplus.com.cn/)人工智能开放平台是旷视科技推出的、面向开发者的开放平台。Face++以 API 或 SDK 的形式，将领先的、基于深度学习的计算机视觉技术开放给开发者
     
-    它可识别图片中的人脸/物体，这里仅处理了物体，此请求无须申请权限
+    它可识别图片中的人脸/物体，这里仅处理了物体，此请求无须申请权限，步骤如下
 
     ##### 安装与初始化
-    - 登录Face++并创建一个应用
-    - 在应用管理里面获取 `API key` & `API Secret`
+    1. 登录Face++并创建一个应用
+    2. 在应用管理里面获取 `API key` & `API Secret`
     
     ##### 图片要求
     - 图片格式：JPG(JPEG)，PNG
@@ -151,8 +160,7 @@
     - 图片文件大小：2MB
     
     ##### 物体识别
-    - 发送请求到 `
-    https://api-cn.faceplusplus.com/imagepp/v1/recognizetext`
+    - 发送请求到 `https://api-cn.faceplusplus.com/imagepp/v1/recognizetext`
     - 类型：POST
     - 参数：`api_key` `api_secret` `image_url`
     - 返回结果：
@@ -178,21 +186,21 @@
     ```
 
 4. Google Customer Search
-    > [Google Custom Search](https://developers.google.com/custom-search/) 可以让用户自定义一个搜索引擎，现在已完成在指定网站进行图片搜索
+    > [Google Custom Search](https://developers.google.com/custom-search/) 可以让用户自定义一个搜索引擎
     
-    本项目中使用它搜索相似的图片，步骤如下
+    本项目中使用它搜索相似的图片，现在已完成在指定网站进行图片搜索，步骤如下
 
     ##### 创建应用
-    - 在 [Google Console](https://console.developers.google.com/project) 创建一个应用
-    - 在 [JSON - introduction](https://developers.google.com/custom-search/json-api/v1/introduction) 界面点击 `GET A KEY` 来获取 custom search engine的 `key`
-    - 在 [Control Panel](https://cse.google.com/all) 选择刚刚创建的应用，在 `Basics->Details->Search engine ID` 中找到 `cx`
-    - 在 [Control Panel](https://cse.google.com/all) 添加想要搜索的网站
+    1. 在 [Google Console](https://console.developers.google.com/project) 创建一个应用
+    2. 在 [JSON - introduction](https://developers.google.com/custom-search/json-api/v1/introduction) 界面点击 `GET A KEY` 来获取 custom search engine的 `key`
+    3. 在 [Control Panel](https://cse.google.com/all) 选择刚刚创建的应用，在 `Basics->Details->Search engine ID` 中获取 `cx`
+    4. 在 [Control Panel](https://cse.google.com/all) 添加想要搜索的网站
     
     ##### 搜索请求
     - 发送请求到 `https://www.googleapis.com/customsearch/v1`
     - 类型： GET
     - 参数： `key` `cs` `q`
-    - 返回结果：[example](https://www.googleapis.com/customsearch/v1?key=AIzaSyAljP8hMCeAuY6h6Jl2I4CUGHCPVVsmbf8&cx=003254118020475787427:jgng_p5tzc0&q=rose)
+    - 返回结果：[Example](https://www.googleapis.com/customsearch/v1?key=AIzaSyAljP8hMCeAuY6h6Jl2I4CUGHCPVVsmbf8&cx=003254118020475787427:jgng_p5tzc0&q=rose)
     
     ##### 本地处理
     
@@ -215,25 +223,25 @@
 用于可从相册选择照片或拍照，裁剪后程序将识别这张照片中的场景和物体，给出结果并用Google搜索相似的照片
 
 ###### 流程
-![process for image-w700](media/15026903108479/process%20for%20image.png)
+![process for image-w800](media/15026903108479/process%20for%20image.png)
 
 ###### 实现
 1. 变量
 
     ```json
     data: {
-    imageSrc: "", // 图片本地地址
-    imageAVUrl: "", // 图片在leanCloud上的地址
-    uploadBtnDisabled: true, // 禁用上传按钮
-    uploadBtnLoading: false, // 上传按钮状态
-    chooseImageBtnDisabled: false, // 禁用选择图片按钮
-    detect_object_result: "", // 检测物体结果
-    detect_scene_result: "", // 检测场景结果
-    detect_result: "", // 检测结果
-    scrollHidden: true, // 隐藏图片搜索结果
-    preChosen: 0, // 上一次选择的结果
-    isChosen: [true], // 图片选择状态数组
-    imageSearchResults: [], // 图片搜索结果
+        imageSrc: "", // 图片本地地址
+        imageAVUrl: "", // 图片在leanCloud上的地址
+        uploadBtnDisabled: true, // 禁用上传按钮
+        uploadBtnLoading: false, // 上传按钮状态
+        chooseImageBtnDisabled: false, // 禁用选择图片按钮
+        detect_object_result: "", // 检测物体结果
+        detect_scene_result: "", // 检测场景结果
+        detect_result: "", // 检测结果
+        scrollHidden: true, // 隐藏图片搜索结果
+        preChosen: 0, // 上一次选择的结果
+        isChosen: [true], // 图片选择状态数组
+        imageSearchResults: [], // 图片搜索结果
     },
     ```
 2. 方法
@@ -272,7 +280,7 @@
         
     - `getImageUrl()`
 
-        上传图片至LeanCloud并获取图片的url
+        上传图片至LeanCloud并获取图片的url，[参考代码](https://leancloud.cn/docs/weapp.html#对象存储)
     
         ```javascript
         new AV.File('file-name', {
@@ -290,7 +298,7 @@
         将图片上传至face++并返回识别结果
         - 调用 `wx.request()`向Face++发送POST请求
         - `content-type` 必须为 `application/x-www-form-urlencoded`
-        - data中需包含 `api_key` `api_secret` `image_url`
+        - `data`中需包含 `api_key` `api_secret` `image_url`
         
         ```javascript
         wx.request({
@@ -306,10 +314,10 @@
           },
           success: function(res) {
             // show the result
-            },
+          },
           fail: function({errMsg}) {
             // fail to recognize image
-            }
+          }
         })
         ```
         
@@ -317,7 +325,7 @@
     
         用Google搜索相似的照片
         - 调用 `wx.request()`向Face++发送POST请求
-        - data中需包含 `key` `cx` `q`
+        - `data`中需包含 `key` `cx` `q`
         - `q` 为从Face++得到的结果
         
         ```javascript
@@ -335,7 +343,6 @@
             // show results
           },
           fail: function({errMsg}) {
-    
           }
         })
         ```
@@ -346,7 +353,6 @@
         
         ```javascript
         var object_id = e.currentTarget.id.slice(-1);
-        // set new data
         optionArray[preChosen] = false
         optionArray[object_id] = true
         self.setData({
@@ -380,7 +386,9 @@
         ```
         
 ###### demo
-![IMG_6244-w350](media/15026903108479/IMG_6244.png)
+![demo1-w350](media/15026903108479/demo1.gif)
+
+
 
 
 -------
@@ -414,11 +422,14 @@ wx.uploadFile({
 - `name`: 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
 
 ###### demo
-![IMG_6243-w350](media/15026903108479/IMG_6243.png)
+![demo2-w350](media/15026903108479/demo2.gif)
 
+
+-----
 
 ### 图表相关
-可使用 [wx-charts](https://github.com/xiaolin3303/wx-charts) 作图
+本项目使用 [wx-charts](https://github.com/xiaolin3303/wx-charts) 作图
+> wx-charts是基于canvas绘制，体积小巧
 
 #### 支持类型
 
@@ -467,6 +478,51 @@ height: 200,
 ![lineChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/line.gif) ![columnChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/column.gif)
 ![areaChart](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/area.gif) ![tooltip](https://raw.githubusercontent.com/xiaolin3303/wx-charts/master/example/tooltip.gif)
 
+-----
+
 ### 定位相关
+可使用微信所给接口来获取用户的位置，[详细文档](https://mp.weixin.qq.com/debug/wxadoc/dev/api/location.html#wxgetlocationobject)
+
+#### 获取经纬度
+
+```javascript
+wx.getLocation({
+ success: function (res) {
+   that.setData({
+     location: formatLocation(res.longitude, res.latitude)
+   })
+ }
+})
+```
+
+#### 显示地图
+
+```javascript
+wx.openLocation({
+    longitude: Number(res.longitude),
+    latitude: Number(res.latitude),
+})
+```
+
+#### 选择地点
+
+```javascript
+wx.chooseLocation({
+ success: function (res) {
+   that.setData({
+     hasLocation: true,
+     location: formatLocation(res.longitude, res.latitude),
+     locationAddress: res.address
+   })
+ }
+})
+```
+
+#### demo
+![IMG_6250-w300](media/15026903108479/IMG_6250.png)![IMG_6251-w300](media/15026903108479/IMG_6251.png)
+![IMG_6252-w300](media/15026903108479/IMG_6252.png)
+
+
+
 
 
