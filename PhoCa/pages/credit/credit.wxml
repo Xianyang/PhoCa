@@ -57,6 +57,6 @@
         </view>
       </view>
 
-    <button type="default" bindtap="getCredit" loading="{{buttonLoading}}" type="primary">Get credit</button>
+    <button type="default" bindtap="getCredit" loading="{{buttonLoading}}" type="primary">Get Credit Score</button>
     <text class="credit_text">{{credit}}</text>
 </view>
