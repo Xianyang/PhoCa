@@ -16,7 +16,8 @@
     "pages/chart_line/chart_line",
     "pages/chart_pie/chart_pie",
     "pages/chart_radar/chart_radar",
-    "pages/chart_ring/chart_ring"
+    "pages/chart_ring/chart_ring",
+    "pages/credit/credit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,6 +48,12 @@
         "text": "chart",
         "iconPath": "./images/chart.png",
         "selectedIconPath": "./images/chart_selected.png"
+      },
+      {
+        "pagePath": "pages/credit/credit",
+        "text": "credit",
+        "iconPath": "./images/pay.png",
+        "selectedIconPath": "./images/pay_selected.png"
       }
     ]
   },

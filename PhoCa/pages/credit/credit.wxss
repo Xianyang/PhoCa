@@ -1,0 +1,8 @@
+
+button{
+  margin: 20rpx;
+}
+
+.credit_text{
+    margin: 20rpx;
+}

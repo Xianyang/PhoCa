@@ -13,10 +13,10 @@ Page({
     detect_object_result: "", // 检测物体结果
     detect_scene_result: "", // 检测场景结果
     detect_result: "", // 检测结果
-    scrollHidden: true, // 隐藏
-    preChosen: 0,
-    isChosen: [true],
-    imageSearchResults: [],
+    scrollHidden: true, // 隐藏图片搜索结果
+    preChosen: 0, // 上一次选择的结果
+    isChosen: [true], // 图片选择状态数组
+    imageSearchResults: [], // 图片搜索结果
   },
   onLoad (option) {
     var avatar = option.avatar

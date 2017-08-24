@@ -1,0 +1,62 @@
+<view class="container">
+    <view class="page-head">
+        <view class="page-head-title">Credit</view>
+        <view class="page-head-line"></view>
+    </view>
+  
+    <view class="weui-cells__title">属性选择器</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">Gender</view>
+        </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindGenderPickerChange" value="{{gender_index}}" range="{{gender_array}}">
+              <view class="weui-input">{{gender_array[gender_index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">Education</view>
+        </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindEducationPickerChange" value="{{education_index}}" range="{{education_array}}">
+              <view class="weui-input">{{education_array[education_index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">Marriage</view>
+        </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindMarriagePickerChange" value="{{marriage_index}}" range="{{marriage_array}}">
+              <view class="weui-input">{{marriage_array[marriage_index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">Estate</view>
+        </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindEstatePickerChange" value="{{estate_condition_index}}" range="{{estate_condition_array}}">
+              <view class="weui-input">{{estate_condition_array[estate_condition_index]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+    <button type="default" bindtap="getCredit" loading="{{buttonLoading}}" type="primary">Get credit</button>
+    <text class="credit_text">{{credit}}</text>
+</view>

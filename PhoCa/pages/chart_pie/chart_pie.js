@@ -6,7 +6,7 @@ Page({
     },
     touchHandler: function (e) {
         console.log(pieChart.getCurrentDataIndex(e));
-    },        
+    },
     onLoad: function (e) {
         var windowWidth = 320;
         try {
